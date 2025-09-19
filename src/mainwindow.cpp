@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "bytearray_writable.hpp"
+#include "widget_integer.hpp"
 
 #include <QSettings>
 #include <QFileDialog>
@@ -236,7 +237,7 @@ void MainWindow::readMCAP(mcap::McapReader& reader)
         ui->tableTopics->setItem(row, 0, channel_item);
         ui->tableTopics->setItem(row, 1, new QTableWidgetItem(schema_name));
         ui->tableTopics->setItem(row, 2, new QTableWidgetItem(encoding));
-        ui->tableTopics->setItem(row, 3, new QTableWidgetItem(QString::number(msg_count)));
+        ui->tableTopics->setItem(row, 3, new QTableWidgetItemInteger(QString::number(msg_count)));
 
         schema_id_by_channel_[channel->topic] = channel->schemaId;
         channel_encoding_[channel->topic] = channel->messageEncoding;
